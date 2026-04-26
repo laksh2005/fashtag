@@ -1,0 +1,14 @@
+.venv/
+node_modules/
+__pycache__/
+*.py[cod]
+
+data/raw_images/**/*.jpg
+data/raw_images/**/*.jpeg
+data/raw_images/**/*.png
+data/raw_images/**/*.webp
+data/metadata/metadata.csv
+
+models/*.pt
+models/*.pth
+database/*.db

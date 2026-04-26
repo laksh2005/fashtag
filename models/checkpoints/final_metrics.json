@@ -1,0 +1,5 @@
+{
+  "best_val_avg_acc": 0.976041667163372,
+  "best_checkpoint": "E:\\fashtag\\models\\checkpoints\\best_multitask_resnet18.pt",
+  "history_csv": "E:\\fashtag\\models\\checkpoints\\training_history.csv"
+}
