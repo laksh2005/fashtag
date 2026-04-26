@@ -1,4 +1,4 @@
-# AI Engineer Hiring Assignment - Fashion Attribute Classification App (FashTag)
+# Fashtag - A Fashion Attribute Classification App 
 
 This project implements the required end-to-end application:
 
