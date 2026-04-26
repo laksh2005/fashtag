@@ -11,6 +11,27 @@ This project implements the required end-to-end application:
 - Provides a simple UI to view products, trigger predictions, and view prediction history
 - Stores prediction tracking records in a SQLite database (no images in DB)
 
+
+Approach:
+- Scrape Myntra product images into 4 buckets and write metadata to CSV.
+- Train one transfer-learning model with a shared CNN backbone and two heads (gender + sleeve).
+- Serve inference via FastAPI and log each prediction to SQLite.
+- UI calls the API to run single/batch predictions and display history.
+
+Model choice:
+- Pretrained `ResNet18` backbone for fast, reliable fine-tuning on a small dataset.
+- Multi-task heads reduce duplication and simplify deployment.
+
+Limitations:
+- Scraped labels are noisy and the dataset can be imbalanced.
+- Scraping can break if Myntra DOM changes or rate-limits requests.
+- Metrics are from a small validation split; may not generalize broadly.
+
+Improvements with more time:
+- Balance/expand dataset and add manual QA for labels.
+- Add richer evaluation outputs (confusion matrices, misclassification review).
+- Better model versioning/monitoring and UI to compare model runs.
+
 ## Setup
 
 ```powershell
@@ -93,30 +114,3 @@ Prediction tracking fields stored (minimum):
 - Model name/version
 - Timestamp
 - Status / error message
-
-## Deliverables
-
-Demo video:
-- Show scrape output (dataset summary), a training run saving a checkpoint, UI single prediction, UI batch prediction, and prediction history updating.
-
-## Short Note
-
-Approach:
-- Scrape Myntra product images into 4 buckets and write metadata to CSV.
-- Train one transfer-learning model with a shared CNN backbone and two heads (gender + sleeve).
-- Serve inference via FastAPI and log each prediction to SQLite.
-- UI calls the API to run single/batch predictions and display history.
-
-Model choice:
-- Pretrained `ResNet18` backbone for fast, reliable fine-tuning on a small dataset.
-- Multi-task heads reduce duplication and simplify deployment.
-
-Limitations:
-- Scraped labels are noisy and the dataset can be imbalanced.
-- Scraping can break if Myntra DOM changes or rate-limits requests.
-- Metrics are from a small validation split; may not generalize broadly.
-
-Improvements with more time:
-- Balance/expand dataset and add manual QA for labels.
-- Add richer evaluation outputs (confusion matrices, misclassification review).
-- Better model versioning/monitoring and UI to compare model runs.
