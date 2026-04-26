@@ -12,3 +12,6 @@ data/metadata/metadata.csv
 models/*.pt
 models/*.pth
 database/*.db
+
+backend_server.err.log
+backend_server.out.log
